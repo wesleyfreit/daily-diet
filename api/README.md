@@ -16,7 +16,7 @@
 
 **2. Set environment variables based on .env examples.**
 
-**3. Run the server based on [commands](#commands).**
+**3. Run the server based on commands section.**
 
 ## ⌨️ Commands
 
