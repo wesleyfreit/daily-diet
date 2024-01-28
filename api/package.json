@@ -4,21 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --clear-screen=false src/server.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch --clear-screen=false src/server.ts",
     "build": "tsup src --out-dir build",
     "start": "node build/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "wesley_freit",
   "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "fastify": "^4.25.2",
+    "zod": "^3.22.4"
+  },
   "devDependencies": {
     "@types/node": "^20.11.8",
+    "cross-env": "^7.0.3",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "fastify": "^4.25.2"
   }
 }
