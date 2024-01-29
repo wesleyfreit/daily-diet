@@ -3,6 +3,8 @@ import { envSchema } from '../validation/envSchema';
 
 if (process.env.NODE_ENV === 'test') {
   config({ path: '.env.test' });
+} else if (process.env.NODE_ENV === 'development') {
+  config({ path: '.env.dev' });
 } else config();
 
 const _env = envSchema.safeParse(process.env);

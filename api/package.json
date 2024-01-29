@@ -9,7 +9,7 @@
     "start": "node build/server.js",
     "lint": "eslint src --fix",
     "test": "vitest",
-    "knex": "node --import tsx node_modules/knex/bin/cli.js"
+    "knex": "cross-env NODE_ENV=development node --import tsx node_modules/knex/bin/cli.js"
   },
   "keywords": [],
   "author": "wesley_freit",
