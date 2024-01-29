@@ -8,7 +8,7 @@
 
 ## 🚀 Quick Start
 
-#### Requirements: Node >=18
+**Requirements: Node >=18**
 
 ---
 
@@ -54,6 +54,15 @@ pnpm start
 
 ```bash
 pnpm run lint
+```
+
+**Run the knex commands:**
+
+```bash
+pnpm run knex # cli command
+pnpm run knex migrate:make migration-name # create migration
+pnpm run knex migrate:latest # insert all migrations created
+pnpm run knex migrate: rollback --all # undo all migrations inserted
 ```
 
 ## 📝 Requirements
