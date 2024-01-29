@@ -6,8 +6,8 @@ declare module 'knex/types/tables' {
     users: {
       id: string;
       name: string;
-      email: number;
-      session_id?: string;
+      email: string;
+      password: string;
     };
     meals: {
       id: string;
