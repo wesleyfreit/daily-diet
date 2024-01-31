@@ -95,6 +95,6 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 - ▶️ The meals must be related for a user
 
-- ▶️ It must be possible to identify the user between requests
+- ✅ It must be possible to identify the user between requests
 
 - ▶️ The user can only view, modify and delete the meals that he has created
