@@ -69,7 +69,7 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 ### 🛠️ Functional Requirements
 
-- ▶️ It must be possible to create a user
+- ✅ It must be possible to create a user
 
 - ▶️ It must be possible to create a meal with the following information:
     * Name
