@@ -15,6 +15,7 @@
   "author": "wesley_freit",
   "license": "MIT",
   "dependencies": {
+    "@fastify/jwt": "^8.0.0",
     "dotenv": "^16.4.1",
     "fastify": "^4.25.2",
     "knex": "^3.1.0",

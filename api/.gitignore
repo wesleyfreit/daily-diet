@@ -1,6 +1,9 @@
 # Node Dependencies
 node_modules/
 
+# SQLite Databases
+db/*.db
+
 # Environment Variables
 .env
 .env.dev

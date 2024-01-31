@@ -5,4 +5,5 @@ export const envSchema = z.object({
   PORT: z.string().transform(Number).default('3333'),
   DATABASE_URL: z.string(),
   DATABASE_CLIENT: z.enum(['pg', 'sqlite']).default('pg'),
+  JWT_SECRET: z.string(),
 });
