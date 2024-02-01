@@ -1,11 +1,15 @@
 import { randomUUID } from 'crypto';
 import { FastifyInstance } from 'fastify';
+
 import { knex } from '../lib/knex';
 import { userAuth } from '../middlewares/userAuth';
+import { userCheck } from '../middlewares/userCheck';
 import { createMealBodySchema } from '../validation/mealsSchema';
 
 export const mealsRoutes = async (app: FastifyInstance) => {
   app.addHook('preHandler', userAuth);
+
+  app.addHook('preHandler', userCheck);
 
   app.get('/', async (request) => {
     const userId = request.user.sub;
