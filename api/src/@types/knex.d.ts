@@ -15,7 +15,7 @@ declare module 'knex/types/tables' {
       name: string;
       description: string;
       is_diet: boolean;
-      date: Date;
+      date: string;
     };
   }
 }

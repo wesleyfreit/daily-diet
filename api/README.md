@@ -71,17 +71,17 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 - ✅ It must be possible to create a user
 
-- ▶️ It must be possible to create a meal with the following information:
-    * Name
-    * Description
-    * DateTime
-    * isDiet
+- ✅ It must be possible to create a meal with the following information:
+  * Name
+  * Description
+  * DateTime
+  * isDiet
   
 - ▶️ It must be possible to modify all data for a registered meal
 
 - ▶️ It must be possible to delete a meal
 
-- ▶️ It must be possible to list all of a user's meals
+- ✅ It must be possible to list all of a user's meals
 
 - ▶️ It must be possible to get a specific meal
 
