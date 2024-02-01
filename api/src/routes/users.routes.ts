@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import { FastifyInstance } from 'fastify';
 
 import { knex } from '../lib/knex';
+import { userAuth } from '../middlewares/userAuth';
 import { createUserBodySchema, loginUserBodySchema } from '../validation/usersSchema';
 
 export const usersRoutes = async (app: FastifyInstance) => {
@@ -46,5 +47,38 @@ export const usersRoutes = async (app: FastifyInstance) => {
       return reply.status(401).send({ error: 'Invalid password' });
     }
     return reply.status(404).send({ error: 'User does not exist' });
+  });
+
+  app.get('/users/metrics', { preHandler: [userAuth] }, async (request, reply) => {
+    const userId = request.user.sub;
+
+    const totalMeals = await knex('meals')
+      .where({ user_id: userId })
+      .select('*')
+      .orderBy('date', 'desc');
+
+    const totalMealsOnDiet = totalMeals.filter((meal) => meal.is_diet).length;
+
+    const totalMealsOffDiet = totalMeals.length - totalMealsOnDiet;
+
+    const { bestOnDietSequence } = totalMeals.reduce(
+      (acc, meal) => {
+        meal.is_diet ? (acc.currentSequence += 1) : (acc.currentSequence = 0);
+
+        if (acc.currentSequence > acc.bestOnDietSequence) {
+          acc.bestOnDietSequence = acc.currentSequence;
+        }
+
+        return acc;
+      },
+      { bestOnDietSequence: 0, currentSequence: 0 },
+    );
+
+    return reply.send({
+      totalMeans: totalMeals.length,
+      totalMealsOnDiet: totalMealsOnDiet,
+      totalMealsOffDiet: totalMealsOffDiet,
+      bestOnDietSequence,
+    });
   });
 };
