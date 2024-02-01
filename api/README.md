@@ -77,7 +77,7 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
   * DateTime
   * isDiet
   
-- ▶️ It must be possible to modify all data for a registered meal
+- ✅ It must be possible to modify all data for a registered meal
 
 - ▶️ It must be possible to delete a meal
 

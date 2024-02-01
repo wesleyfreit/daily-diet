@@ -5,3 +5,9 @@ export const createMealBodySchema = z.object({
   description: z.string({ required_error: 'Description is required' }),
   is_diet: z.boolean({ required_error: 'Is diet required' }),
 });
+
+export const updateMealBodySchema = z.object({
+  name: z.string().optional(),
+  description: z.string().optional(),
+  is_diet: z.boolean().optional(),
+});
