@@ -79,7 +79,7 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
   
 - ✅ It must be possible to modify all data for a registered meal
 
-- ▶️ It must be possible to delete a meal
+- ✅ It must be possible to delete a meal
 
 - ✅ It must be possible to list all of a user's meals
 
@@ -97,4 +97,4 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 - ✅ It must be possible to identify the user between requests
 
-- ▶️ The user can only view, modify and delete the meals that he has created
+- ✅ The user can only view, modify and delete the meals that he has created
