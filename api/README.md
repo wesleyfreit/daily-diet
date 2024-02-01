@@ -83,7 +83,7 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 - ✅ It must be possible to list all of a user's meals
 
-- ▶️ It must be possible to get a specific meal
+- ✅ It must be possible to get a specific meal
 
 - ▶️ It must be possible to get a user's metrics:
   * Total number of meals recorded

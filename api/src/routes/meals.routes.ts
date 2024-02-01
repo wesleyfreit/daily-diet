@@ -5,6 +5,7 @@ import { knex } from '../lib/knex';
 import { userAuth } from '../middlewares/userAuth';
 import { userCheck } from '../middlewares/userCheck';
 import { createMealBodySchema } from '../validation/mealsSchema';
+import { getParamsSchema } from '../validation/paramsSchema';
 
 export const mealsRoutes = async (app: FastifyInstance) => {
   app.addHook('preHandler', userAuth);
@@ -14,7 +15,9 @@ export const mealsRoutes = async (app: FastifyInstance) => {
   app.get('/', async (request, reply) => {
     const userId = request.user.sub;
 
-    const meals = await knex('meals').where({ user_id: userId }).select('*');
+    const meals = await knex('meals')
+      .where({ user_id: userId })
+      .select('id', 'name', 'is_diet', 'date');
 
     return reply.send({ meals });
   });
@@ -35,5 +38,19 @@ export const mealsRoutes = async (app: FastifyInstance) => {
     });
 
     return reply.status(201).send({ id });
+  });
+
+  app.get('/:id', async (request, reply) => {
+    const userId = request.user.sub;
+
+    const { id } = getParamsSchema.parse(request.params);
+
+    const meal = await knex('meals').where({ id, user_id: userId }).first();
+
+    if (!meal) {
+      return reply.status(404).send({ error: 'Meal not found' });
+    }
+
+    return reply.send({ meal });
   });
 };
