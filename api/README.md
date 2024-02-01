@@ -93,7 +93,7 @@ pnpm run knex migrate: rollback --all # undo all migrations inserted
 
 ### 📚 Business Rules
 
-- ▶️ The meals must be related for a user
+- ✅ The meals must be related for a user
 
 - ✅ It must be possible to identify the user between requests
 

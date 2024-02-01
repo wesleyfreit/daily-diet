@@ -12,7 +12,7 @@ export const usersRoutes = async (app: FastifyInstance) => {
     const userByEmail = await knex('users').where({ email }).first();
 
     if (userByEmail) {
-      return reply.status(400).send({ message: 'User already exists' });
+      return reply.status(400).send({ error: 'User already exists' });
     }
 
     const hash = await bcrypt.hash(password, 10);
@@ -41,10 +41,10 @@ export const usersRoutes = async (app: FastifyInstance) => {
       if (isValidPassword) {
         const token = app.jwt.sign({}, { expiresIn: '1h', sub: userByEmail.id });
 
-        return reply.status(200).send({ user_id: userByEmail.id, token });
+        return reply.send({ user_id: userByEmail.id, token });
       }
-      return reply.status(401).send({ message: 'Invalid password' });
+      return reply.status(401).send({ error: 'Invalid password' });
     }
-    return reply.status(401).send({ message: 'User does not exist' });
+    return reply.status(404).send({ error: 'User does not exist' });
   });
 };

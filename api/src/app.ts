@@ -16,9 +16,13 @@ app.register(jwt, { secret: env.JWT_SECRET });
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof ZodError) {
-    reply.status(400).send({
-      message: error.errors.map((err) => err.message).join(', '),
-    });
+    const errorObject = error.errors.reduce((acc: { [key: string]: string }, err) => {
+      const path = err.path[0];
+      acc[path] = err.message;
+      return acc;
+    }, {});
+
+    reply.status(400).send({ error: errorObject });
   } else {
     reply.status(500).send({ error: 'Internal server error' });
   }

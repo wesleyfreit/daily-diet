@@ -11,12 +11,12 @@ export const mealsRoutes = async (app: FastifyInstance) => {
 
   app.addHook('preHandler', userCheck);
 
-  app.get('/', async (request) => {
+  app.get('/', async (request, reply) => {
     const userId = request.user.sub;
 
     const meals = await knex('meals').where({ user_id: userId }).select('*');
 
-    return { meals };
+    return reply.send({ meals });
   });
 
   app.post('/', async (request, reply) => {
