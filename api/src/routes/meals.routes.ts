@@ -24,7 +24,7 @@ export const mealsRoutes = async (app: FastifyInstance) => {
 
   app.post('/', async (request, reply) => {
     const userId = request.user.sub;
-    const { name, description, is_diet } = createMealBodySchema.parse(request.body);
+    const { name, description, is_diet, date } = createMealBodySchema.parse(request.body);
 
     const id = randomUUID();
 
@@ -33,7 +33,7 @@ export const mealsRoutes = async (app: FastifyInstance) => {
       name,
       description,
       is_diet,
-      date: new Date().toISOString(),
+      date: date.getTime(),
       user_id: userId,
     });
 
@@ -69,7 +69,10 @@ export const mealsRoutes = async (app: FastifyInstance) => {
 
     await knex('meals')
       .where({ id })
-      .update({ ...data });
+      .update({
+        ...data,
+        date: data.date ? data.date.getTime() : meal.date,
+      });
 
     return reply.status(204).send();
   });

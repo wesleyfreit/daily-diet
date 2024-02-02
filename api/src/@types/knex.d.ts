@@ -9,13 +9,14 @@ declare module 'knex/types/tables' {
       email: string;
       password: string;
     };
+
     meals: {
       id: string;
       user_id: string;
       name: string;
       description: string;
       is_diet: boolean;
-      date: string;
+      date: number;
     };
   }
 }
