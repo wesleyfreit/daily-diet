@@ -8,7 +8,7 @@
     "build": "tsup src --out-dir build",
     "start": "node build/server.js",
     "lint": "eslint src --fix",
-    "test": "vitest",
+    "test": "vitest --run --no-file-parallelism",
     "knex": "node --import tsx node_modules/knex/bin/cli.js",
     "knex-dev": "cross-env NODE_ENV=development node --import tsx node_modules/knex/bin/cli.js"
   },

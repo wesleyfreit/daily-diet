@@ -2,7 +2,7 @@ import request from 'supertest';
 import { beforeAll, describe, it } from 'vitest';
 import { app } from '../src/app';
 
-describe('API Service', () => {
+describe('Server routes', () => {
   beforeAll(async () => {
     await app.ready();
   });
