@@ -60,6 +60,7 @@ pnpm run lint
 
 ```bash
 pnpm run knex # cli command
+pnpm run knex-dev # cli command for development environment
 pnpm run knex migrate:make migration-name # create migration
 pnpm run knex migrate:latest # insert all migrations created
 pnpm run knex migrate: rollback --all # undo all migrations inserted
