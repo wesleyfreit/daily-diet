@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch --clear-screen=false src/server.ts",
     "build": "tsup src --out-dir build",
@@ -10,7 +13,8 @@
     "lint": "eslint src --fix",
     "test": "vitest --run --no-file-parallelism",
     "knex": "node --import tsx node_modules/knex/bin/cli.js",
-    "knex-dev": "cross-env NODE_ENV=development node --import tsx node_modules/knex/bin/cli.js"
+    "knex-dev": "cross-env NODE_ENV=development node --import tsx node_modules/knex/bin/cli.js",
+    "vercel-build": "pnpm run knex migrate:latest"
   },
   "keywords": [],
   "author": "wesley_freit",

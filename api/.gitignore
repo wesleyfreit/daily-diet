@@ -1,6 +1,9 @@
 # Node Dependencies
 node_modules/
 
+# Build Directory
+build/
+
 # SQLite Databases
 db/*.db
 
@@ -8,3 +11,4 @@ db/*.db
 .env
 .env.dev
 .env.test
+.vercel
